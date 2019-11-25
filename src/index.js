@@ -6,8 +6,7 @@ const any = (arr, fn = Boolean) => arr.some(fn);
 const pipe = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
 const isString = val => typeof val === 'string';
 const isEmpty = val => val == null || !(Object.keys(val) || val).length;
-const isArray = obj =>
-  obj != null && typeof obj[Symbol.iterator] === 'function';
+const isArray = obj => obj != null && typeof obj[Symbol.iterator] === 'function';
 const isBlock = str => str.match(REG_BLOCK);
 const isElement = str => str.match(REG_ELEM);
 const isMod = str => str.match(REG_MOD);
