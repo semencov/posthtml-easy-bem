@@ -11,7 +11,7 @@ const isBlock = str => str.match(REG_BLOCK);
 const isElement = str => str.match(REG_ELEM);
 const isMod = str => str.match(REG_MOD);
 
-const getClassList = (exports.getClassList = pipe(
+const getClassList = pipe(
   str => {
     if (!isString(str)) {
       throw new Error(
@@ -22,9 +22,9 @@ const getClassList = (exports.getClassList = pipe(
   },
   str => str.split(/\s+/),
   arr => arr.filter(str => !isEmpty(str))
-));
+);
 
-const createBlockClass = (exports.createBlockClass = (classList = []) => {
+const createBlockClass = (classList = []) => {
   if (!isArray(classList)) {
     throw new Error(
       'createBlockClass argument must be an array, ' +
@@ -33,26 +33,18 @@ const createBlockClass = (exports.createBlockClass = (classList = []) => {
     );
   }
 
-  return [...classList].reverse().reduce((a, b) => b.match(REG_BLOCK) ? b : a);
-});
+  return [...classList]
+    .reverse()
+    .reduce((a, b) => (b.match(REG_BLOCK) ? b : a));
+};
 
-const createElemClass = (exports.createElemClass = (
-  blockClass,
-  elemName,
-  elemPrefix = '__'
-) => elemName.replace(REG_ELEM, blockClass + elemPrefix));
+const createElemClass = (blockClass, elemName, elemPrefix = '__') =>
+  elemName.replace(REG_ELEM, blockClass + elemPrefix);
 
-const createModClass = (exports.createModClass = (
-  baseClass,
-  modName,
-  modPrefix = '--'
-) => modName.replace(REG_MOD, baseClass + modPrefix));
+const createModClass = (baseClass, modName, modPrefix = '--') =>
+  modName.replace(REG_MOD, baseClass + modPrefix);
 
-const processElement = (exports.processElement = (
-  baseClass,
-  classList = [],
-  elemPrefix = '__'
-) => {
+const processElement = (baseClass, classList = [], elemPrefix = '__') => {
   if (!isArray(classList)) {
     throw new Error(
       'processElement second argument must be an array, ' +
@@ -64,19 +56,25 @@ const processElement = (exports.processElement = (
   return classList
     .map(cls => isElement(cls) ? createElemClass(baseClass, cls, elemPrefix) : cls)
     .join(' ');
-});
+};
 
-const processMods = (exports.processMods = (
-  baseClass,
-  classList,
-  modPrefix = '--'
-) => classList
-  .map(cls => isMod(cls) ? createModClass(baseClass, cls, modPrefix) : cls)
-  .join(' '));
+const processMods = (baseClass, classList, modPrefix = '--') =>
+  classList
+    .map(cls => (isMod(cls) ? createModClass(baseClass, cls, modPrefix) : cls))
+    .join(' ');
 
 const defaultConfig = {
   elemPrefix: '__',
   modPrefix: '--'
+};
+
+exports = {
+  getClassList,
+  createBlockClass,
+  createElemClass,
+  createModClass,
+  processElement,
+  processMods
 };
 
 exports.default = options => {
@@ -96,11 +94,7 @@ exports.default = options => {
               let childClassList = getClassList(child.attrs.class);
 
               if (any(childClassList, isElement)) {
-                child.attrs.class = processElement(
-                  block,
-                  childClassList,
-                  config.elemPrefix
-                );
+                child.attrs.class = processElement(block, childClassList, config.elemPrefix);
               }
             }
           });
