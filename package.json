@@ -1,6 +1,6 @@
 {
   "name": "posthtml-easy-bem",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostHTML plugin for support to simplify the maintenance of BEM structure based on prefixes.",
   "keywords": [
     "posthtml",
