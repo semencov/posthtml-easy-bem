@@ -31,7 +31,7 @@
     "posthtml": "^0.12.0"
   },
   "devDependencies": {
-    "@smcv/eslint-config": "^1.1.3",
+    "@smcv/eslint-config": "^2.0.2",
     "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.5.0",
