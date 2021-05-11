@@ -1,6 +1,7 @@
 {
   "extends": ["config:base"],
-  "bumpVersion": null,
+	"assignAutomerge": true,
+	"automerge": true,
   "packageRules": [
     {
       "depTypeList": ["dependencies"],
@@ -15,6 +16,7 @@
   ],
   "prHourlyLimit": 5,
   "prConcurrentLimit": 10,
+  "bumpVersion": null,
   "rangeStrategy": "bump",
   "timezone": "Europe/Riga"
 }
