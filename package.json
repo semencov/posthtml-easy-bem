@@ -44,7 +44,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-unicorn": "^12.1.0",
-    "jest": "^26.0.0"
+    "jest": "^26.6.3"
   },
   "eslintConfig": {
     "extends": "@smcv/eslint-config/node",
