@@ -40,7 +40,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prefer-let": "^1.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-unicorn": "^12.1.0",
